@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class ConcatenarListaCircularUI {
+
+    public static class Nodo {
+
+        String valor;
+        Nodo siguiente;
+
+        public Nodo(String valor) {
+            this.valor = valor;
+            this.siguiente = null;
+        }
+    }
+
+    public static String concatenarLista(Nodo cabeza) {
+        if (cabeza == null) {
+            return "";
+        } else {
+            String resultado = cabeza.valor + " ";
+            Nodo actual = cabeza.siguiente;
+            while (actual != null && actual != cabeza) {
+                resultado += actual.valor + " ";
+                actual = actual.siguiente;
+            }
+            return resultado;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese la cantidad de nodos de la lista circular: ");
+        int cantidadNodos = scanner.nextInt();
+
+        Nodo cabeza = null;
+        Nodo nodoActual = null;
+        for (int i = 0; i < cantidadNodos; i++) {
+            System.out.print("Ingrese el valor del nodo " + (i + 1) + ": ");
+            String valorNodo = scanner.nextLine();
+
+            if (cabeza == null) {
+                cabeza = new Nodo(valorNodo);
+                nodoActual = cabeza;
+            } else {
+                Nodo nuevoNodo = new Nodo(valorNodo);
+                nodoActual.siguiente = nuevoNodo;
+                nodoActual = nuevoNodo;
+            }
+        }
+        nodoActual.siguiente = cabeza; // Conectar el último nodo con la cabeza
+        String cadenaConcatenada = concatenarLista(cabeza);
+        System.out.println("Cadena concatenada: " + cadenaConcatenada);
+    }
+}
