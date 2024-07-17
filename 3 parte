@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese el número para calcular el factorial (A):");
+        int numA = scanner.nextInt();
+        System.out.println("Ingrese la base para calcular la potencia (B):");
+        int baseB = scanner.nextInt();
+        System.out.println("Ingrese el exponente para calcu1"
+                + "2lar la potencia (B):");
+        int exponenteB = scanner.nextInt();
+        long factorialA = calcularFactorial(numA);
+        double potenciaB = calcularPotencia(baseB, exponenteB);
+        System.out.println("El factorial de " + numA + " es: " + factorialA);
+        System.out.println("La potencia de " + baseB + " elevado a " + exponenteB + " es: " + potenciaB);
+        double resultado = factorialA * potenciaB;
+        System.out.println("El resultado de la multiplicación es: " + resultado);
+    }
+    public static long calcularFactorial(int num) {
+        long factorial = 1;
+        for (int i = 1; i <= num; i++) {
+            factorial *= i;
+        }
+        return factorial;
+    }
+    public static double calcularPotencia(int base, int exponente) {
+        return Math.pow(base, exponente);
+    }
+}
