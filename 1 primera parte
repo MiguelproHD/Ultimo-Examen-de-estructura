@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class SumaRecursivaArregloUI {
+
+    public static int sumaRecursiva(int[] arreglo, int indice) {
+        if (indice == 0) {
+            return arreglo[0];
+        } else {
+            return arreglo[indice] + sumaRecursiva(arreglo, indice - 1);
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("------------");            
+        System.out.print("Por favor ingrese la cantidad de elementos del arreglo: ");
+        int longitudArreglo = scanner.nextInt();
+        int[] arreglo = new int[longitudArreglo];
+        for (int i = 0; i < longitudArreglo; i++) {
+            System.out.println("------------");
+            System.out.print("Por favor ingrese el elemento " + (i + 1) + ": ");
+            arreglo[i] = scanner.nextInt();
+        }
+        int resultado = sumaRecursiva(arreglo, arreglo.length - 1);
+        System.out.println("Suma total: " + resultado);
+    }
+}
